@@ -20,18 +20,19 @@ namespace CloudSpeicher
         {
             bool angemeldet = false; 
 
-            Console.WriteLine("t");
             string query = "SELECT passwort FROM benutzer WHERE '"+ benutzername+"' = benutzername;";
+            
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
             commandDatabase.CommandTimeout = 60;
 
-            MySqlDataReader reader;
             try
-            { 
+            {
+
                 databaseConaction.Open();
 
-                reader = commandDatabase.ExecuteReader();
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
                 if(reader.HasRows)
                 {
                     while (reader.Read())
@@ -40,22 +41,40 @@ namespace CloudSpeicher
                         {
                             Console.WriteLine("richtig");
                             angemeldet = true;
-                        }
+                        }            
                     }
                 }
-                databaseConaction.Close();
             }
             catch (Exception e)
             {
                 Console.Write("error: " + e.Message);
             }
+            databaseConaction.Close();
             return angemeldet;
         }
 
 
-        public void Acountersellen()
+        public void Acountersellen(string benutzer, string passwort, string Vorname, string Nachname)
         {
 
+            string query = "INSERT INTO benutzer Values " +
+                "(NULL,'" + benutzer + "','" + passwort + "','" + Vorname + "','" +Nachname +"');";
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+            commandDatabase.CommandTimeout = 60;
+
+            try
+            {
+                databaseConaction.Open();
+
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+                databaseConaction.Close();  
+              
+            }
+            catch (Exception e)
+            {
+                Console.Write("error: " + e.Message);
+            }
         }
     }
 }

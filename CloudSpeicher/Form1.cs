@@ -12,22 +12,37 @@ namespace CloudSpeicher
 {
     public partial class Form1 : Form
     {
+        DatenbankAnbindung db = new DatenbankAnbindung();
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBoxBenutzerName_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBoxPasswort_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            if(textBoxBenutzerName.Text != "" && textBoxPasswort.Text != "")
+            {
+                Console.WriteLine(textBoxBenutzerName.Text + textBoxPasswort.Text);
+                bool Loginerfolgreich = db.Anmelden(textBoxBenutzerName.Text, textBoxPasswort.Text);
+            }
+        }
+
+        private void buttonPasswortvergessen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAcountErstellen_Click(object sender, EventArgs e)
         {
 
         }

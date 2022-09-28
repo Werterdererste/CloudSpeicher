@@ -14,8 +14,6 @@ namespace CloudSpeicher
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("tz"); 
-            DatenbankAnbindung db = new DatenbankAnbindung();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

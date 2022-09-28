@@ -28,92 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.textBoxBenutzerName = new System.Windows.Forms.TextBox();
+            this.textBoxPasswort = new System.Windows.Forms.TextBox();
+            this.labelBenutzerName = new System.Windows.Forms.Label();
+            this.labelPasswort = new System.Windows.Forms.Label();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonAcountErstellen = new System.Windows.Forms.Button();
+            this.buttonPasswortvergessen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxBenutzerName
             // 
-            this.textBox1.Location = new System.Drawing.Point(262, 106);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 0;
+            this.textBoxBenutzerName.Location = new System.Drawing.Point(262, 106);
+            this.textBoxBenutzerName.Name = "textBoxBenutzerName";
+            this.textBoxBenutzerName.Size = new System.Drawing.Size(100, 22);
+            this.textBoxBenutzerName.TabIndex = 0;
+            this.textBoxBenutzerName.TextChanged += new System.EventHandler(this.textBoxBenutzerName_TextChanged);
             // 
-            // textBox2
+            // textBoxPasswort
             // 
-            this.textBox2.Location = new System.Drawing.Point(262, 187);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 1;
+            this.textBoxPasswort.Location = new System.Drawing.Point(262, 187);
+            this.textBoxPasswort.Name = "textBoxPasswort";
+            this.textBoxPasswort.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPasswort.TabIndex = 1;
+            this.textBoxPasswort.TextChanged += new System.EventHandler(this.textBoxPasswort_TextChanged);
             // 
-            // label1
+            // labelBenutzerName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 112);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Benutzer Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.labelBenutzerName.AutoSize = true;
+            this.labelBenutzerName.Location = new System.Drawing.Point(99, 112);
+            this.labelBenutzerName.Name = "labelBenutzerName";
+            this.labelBenutzerName.Size = new System.Drawing.Size(99, 16);
+            this.labelBenutzerName.TabIndex = 2;
+            this.labelBenutzerName.Text = "Benutzer Name";
             // 
-            // label2
+            // labelPasswort
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 193);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Passwort";
+            this.labelPasswort.AutoSize = true;
+            this.labelPasswort.Location = new System.Drawing.Point(99, 193);
+            this.labelPasswort.Name = "labelPasswort";
+            this.labelPasswort.Size = new System.Drawing.Size(62, 16);
+            this.labelPasswort.TabIndex = 3;
+            this.labelPasswort.Text = "Passwort";
             // 
-            // button1
+            // buttonLogin
             // 
-            this.button1.Location = new System.Drawing.Point(262, 261);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonLogin.Location = new System.Drawing.Point(262, 261);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.Text = "Login";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // button2
+            // buttonAcountErstellen
             // 
-            this.button2.Location = new System.Drawing.Point(651, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Acount erstellen";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonAcountErstellen.Location = new System.Drawing.Point(651, 25);
+            this.buttonAcountErstellen.Name = "buttonAcountErstellen";
+            this.buttonAcountErstellen.Size = new System.Drawing.Size(135, 23);
+            this.buttonAcountErstellen.TabIndex = 5;
+            this.buttonAcountErstellen.Text = "Acount erstellen";
+            this.buttonAcountErstellen.UseVisualStyleBackColor = true;
+            this.buttonAcountErstellen.Click += new System.EventHandler(this.buttonAcountErstellen_Click);
             // 
-            // button3
+            // buttonPasswortvergessen
             // 
-            this.button3.Location = new System.Drawing.Point(420, 190);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Passwort vergessen";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonPasswortvergessen.Location = new System.Drawing.Point(420, 190);
+            this.buttonPasswortvergessen.Name = "buttonPasswortvergessen";
+            this.buttonPasswortvergessen.Size = new System.Drawing.Size(165, 23);
+            this.buttonPasswortvergessen.TabIndex = 6;
+            this.buttonPasswortvergessen.Text = "Passwort vergessen";
+            this.buttonPasswortvergessen.UseVisualStyleBackColor = true;
+            this.buttonPasswortvergessen.Click += new System.EventHandler(this.buttonPasswortvergessen_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 456);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.buttonPasswortvergessen);
+            this.Controls.Add(this.buttonAcountErstellen);
+            this.Controls.Add(this.buttonLogin);
+            this.Controls.Add(this.labelPasswort);
+            this.Controls.Add(this.labelBenutzerName);
+            this.Controls.Add(this.textBoxPasswort);
+            this.Controls.Add(this.textBoxBenutzerName);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,13 +122,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBoxBenutzerName;
+        private System.Windows.Forms.TextBox textBoxPasswort;
+        private System.Windows.Forms.Label labelBenutzerName;
+        private System.Windows.Forms.Label labelPasswort;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Button buttonAcountErstellen;
+        private System.Windows.Forms.Button buttonPasswortvergessen;
     }
 }
 
