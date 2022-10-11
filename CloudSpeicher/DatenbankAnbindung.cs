@@ -18,10 +18,11 @@ namespace CloudSpeicher
 
         public bool Anmelden(string benutzername, string passwort)
         {
-            bool angemeldet = false; 
+            bool angemeldet = false;
 
-            string query = "SELECT passwort FROM benutzer WHERE '"+ benutzername+"' = benutzername;";
-            
+            string query = "SELECT passwort, benutzername FROM benutzer WHERE benutzername = '" + benutzername + "'  " +
+               "AND passwort = '" + passwort + "' ;";
+
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
             commandDatabase.CommandTimeout = 60;
@@ -37,11 +38,8 @@ namespace CloudSpeicher
                 {
                     while (reader.Read())
                     {
-                        if (reader.GetString(0) == passwort)
-                        {
-                            Console.WriteLine("richtig");
-                            angemeldet = true;
-                        }            
+                        Console.WriteLine("richtig");
+                        angemeldet = true;                           
                     }
                 }
             }
@@ -75,6 +73,37 @@ namespace CloudSpeicher
             {
                 Console.Write("error: " + e.Message);
             }
+        }
+
+        public string[] AcoutInformationen(string benutzername)
+        {
+            string query = "SELECT Vorname, Nachname FROM benutzer " +
+                           "WHERE benutzername = '" + benutzername + "';";
+
+            string[] user = null;
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+            commandDatabase.CommandTimeout = 60;
+
+            try
+            {
+                databaseConaction.Open();
+
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        user = new string[] { reader.GetString(0), reader.GetString(1) } ;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write("error: " + e.Message);
+            }
+            databaseConaction.Close();
+            return user;
         }
     }
 }
