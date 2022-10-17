@@ -34,9 +34,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 33);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F);
+            this.label1.Location = new System.Drawing.Point(226, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(191, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Datei Hochladen";
             // 
@@ -44,8 +45,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.Controls.Add(this.label1);
             this.Name = "DateiHochladen";
+            this.Size = new System.Drawing.Size(600, 480);
             this.ResumeLayout(false);
             this.PerformLayout();
 

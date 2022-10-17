@@ -49,44 +49,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateiHochladen.cs">
+    <Compile Include="view\Anmelden\Anmeldemaske.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Anmelden\Anmeldemaske.Designer.cs">
+      <DependentUpon>Anmeldemaske.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Anmelden\CreateAccountScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DateiHochladen.Designer.cs">
+    <Compile Include="view\Anmelden\CreateAccountScreen.Designer.cs">
+      <DependentUpon>CreateAccountScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Anmelden\LoginScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\Anmelden\LoginScreen.Designer.cs">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Daschbord\Datei Runterladen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\Daschbord\Datei Runterladen.Designer.cs">
+      <DependentUpon>Datei Runterladen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Daschbord\DateiHochladen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\Daschbord\DateiHochladen.Designer.cs">
       <DependentUpon>DateiHochladen.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatenbankAnbindung.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Scripts\DatenbankAnbindung.cs" />
+    <Compile Include="view\Daschbord\Form3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form3.Designer.cs">
+    <Compile Include="view\Daschbord\Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="view\Daschbord\Konto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\Daschbord\Konto.Designer.cs">
+      <DependentUpon>Konto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DateiHochladen.resx">
+    <EmbeddedResource Include="view\Daschbord\Datei Runterladen.resx">
+      <DependentUpon>Datei Runterladen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Daschbord\DateiHochladen.resx">
       <DependentUpon>DateiHochladen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
+    <EmbeddedResource Include="view\Daschbord\Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Daschbord\Konto.resx">
+      <DependentUpon>Konto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,5 +129,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
