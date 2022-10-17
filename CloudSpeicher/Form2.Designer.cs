@@ -47,7 +47,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(200, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 350);
+            this.panel1.Size = new System.Drawing.Size(400, 400);
             this.panel1.TabIndex = 0;
             // 
             // buttonAcounterstellen
@@ -84,7 +84,7 @@
             this.textBoxPasswort.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPasswort.Location = new System.Drawing.Point(100, 130);
             this.textBoxPasswort.Name = "textBoxPasswort";
-            this.textBoxPasswort.Size = new System.Drawing.Size(200, 27);
+            this.textBoxPasswort.Size = new System.Drawing.Size(200, 21);
             this.textBoxPasswort.TabIndex = 2;
             // 
             // textBoxBenutzername
@@ -95,7 +95,7 @@
             this.textBoxBenutzername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBenutzername.Location = new System.Drawing.Point(100, 70);
             this.textBoxBenutzername.Name = "textBoxBenutzername";
-            this.textBoxBenutzername.Size = new System.Drawing.Size(200, 27);
+            this.textBoxBenutzername.Size = new System.Drawing.Size(200, 21);
             this.textBoxBenutzername.TabIndex = 1;
             // 
             // label1
@@ -108,7 +108,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(132, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 32);
+            this.label1.Size = new System.Drawing.Size(111, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Anmelden";
             // 
@@ -117,7 +117,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Navy;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
