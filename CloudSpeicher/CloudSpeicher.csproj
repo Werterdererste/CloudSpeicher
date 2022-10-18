@@ -55,18 +55,6 @@
     <Compile Include="view\Anmelden\Anmeldemaske.Designer.cs">
       <DependentUpon>Anmeldemaske.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\Anmelden\CreateAccountScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="view\Anmelden\CreateAccountScreen.Designer.cs">
-      <DependentUpon>CreateAccountScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\Anmelden\LoginScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="view\Anmelden\LoginScreen.Designer.cs">
-      <DependentUpon>LoginScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\Daschbord\Datei Runterladen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +82,9 @@
     </Compile>
     <Compile Include="Scripts\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="view\Anmelden\Anmeldemaske.resx">
+      <DependentUpon>Anmeldemaske.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\Daschbord\Datei Runterladen.resx">
       <DependentUpon>Datei Runterladen.cs</DependentUpon>
     </EmbeddedResource>
