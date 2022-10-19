@@ -45,7 +45,12 @@ namespace CloudSpeicher
         {
             dateiHochladen1.Hide();
             datei_Runterladen1.Hide();
-            konto1.Hide();
+            konto1.Show();
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

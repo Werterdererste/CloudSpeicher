@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudSpeicher.view.Anmelden;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace CloudSpeicher
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form3());      
+            Application.Run(new Anmeldemaske());      
         }
     }
 }

@@ -55,6 +55,12 @@
     <Compile Include="view\Anmelden\Anmeldemaske.Designer.cs">
       <DependentUpon>Anmeldemaske.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\Anmelden\CreateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Anmelden\CreateAccount.Designer.cs">
+      <DependentUpon>CreateAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Daschbord\Datei Runterladen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="view\Anmelden\Anmeldemaske.resx">
       <DependentUpon>Anmeldemaske.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Anmelden\CreateAccount.resx">
+      <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Daschbord\Datei Runterladen.resx">
       <DependentUpon>Datei Runterladen.cs</DependentUpon>
@@ -120,6 +129,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

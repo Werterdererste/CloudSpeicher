@@ -17,14 +17,35 @@ namespace CloudSpeicher.view.Anmelden
             InitializeComponent();
         }
 
-        private void Anmeldemaske_Load(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
+            DatenbankAnbindung db = new DatenbankAnbindung();
+            bool erfolgreich = db.Anmelden(textBoxBenutzername.Text, textBoxPasswort.Text);
+            if (erfolgreich)
+            {
+                //öffne Dashbord
+                Form dashdashboard = new Form3();
+                dashdashboard.Show();
 
+                this.Hide();
+            }
+            else
+            {
+                //anzeigen Passwort Falsch
+                labelFalsch.Show();
+            }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void buttonCreateAccount_Click(object sender, EventArgs e)
         {
+            //öffne fenster Create Account
+            Form createaccount = new CreateAccount();
+            createaccount.Show();
+        }
 
+        private void Anmeldemaske_Load(object sender, EventArgs e)
+        {
+            labelFalsch.Hide();
         }
     }
 }
