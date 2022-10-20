@@ -16,5 +16,56 @@ namespace CloudSpeicher.view.Anmelden
         {
             InitializeComponent();
         }
+
+        private void CreateAccount_Load(object sender, EventArgs e)
+        {
+            labelInfoFeld.Hide();
+            labelInfoPasswort.Hide();
+            labelInfoUsername.Hide();
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            DatenbankAnbindung db = new DatenbankAnbindung();
+
+         Console.WriteLine("t");
+
+            //Alle Felder Ausgefüllt
+            bool Empty = textBoxVorname.TextLength == 0 || textBoxNachname.TextLength == 0
+                || textBoxUsername.TextLength == 0 || textBoxPasswort.TextLength == 0
+                || textBoxPasswortwiederholen.TextLength == 0;
+
+
+            if (!Empty)
+            {
+                // username nicht benutzt
+                if (db.UsernameFree(textBoxUsername.Text))
+                {
+                    //Passwörter stimmen überein
+                    if (textBoxPasswort.Text == textBoxPasswortwiederholen.Text)
+                    {
+                        /////////////passwort Hashen
+
+                        db.Acountersellen(textBoxUsername.Text,textBoxPasswort.Text, textBoxVorname.Text,
+                            textBoxNachname.Text);
+
+                        //fenster schlißen
+                        this.Close();
+                    }
+                    else
+                    {
+                        labelInfoPasswort.Show();
+                    }
+                }
+                else
+                {
+                    labelInfoUsername.Show();
+                }
+            }
+            else
+            {
+                labelInfoFeld.Show();
+            }
+        }
     }
 }

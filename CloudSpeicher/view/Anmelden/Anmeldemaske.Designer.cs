@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelFalsch = new System.Windows.Forms.Label();
+            this.linkLabelVergessen = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +59,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(75, 181);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 1);
             this.panel1.TabIndex = 1;
@@ -69,7 +70,7 @@
             this.textBoxBenutzername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxBenutzername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.textBoxBenutzername.Location = new System.Drawing.Point(75, 150);
-            this.textBoxBenutzername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxBenutzername.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBenutzername.Name = "textBoxBenutzername";
             this.textBoxBenutzername.Size = new System.Drawing.Size(250, 31);
             this.textBoxBenutzername.TabIndex = 2;
@@ -80,7 +81,7 @@
             this.textBoxPasswort.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPasswort.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.textBoxPasswort.Location = new System.Drawing.Point(75, 270);
-            this.textBoxPasswort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPasswort.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPasswort.Name = "textBoxPasswort";
             this.textBoxPasswort.PasswordChar = '*';
             this.textBoxPasswort.Size = new System.Drawing.Size(250, 31);
@@ -90,7 +91,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(75, 301);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 1);
             this.panel2.TabIndex = 3;
@@ -100,10 +101,10 @@
             this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(0)))));
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.buttonLogin.Location = new System.Drawing.Point(67, 369);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogin.Location = new System.Drawing.Point(75, 375);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(267, 62);
+            this.buttonLogin.Size = new System.Drawing.Size(250, 60);
             this.buttonLogin.TabIndex = 5;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -113,10 +114,10 @@
             // 
             this.buttonCreateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.buttonCreateAccount.Location = new System.Drawing.Point(67, 438);
+            this.buttonCreateAccount.Location = new System.Drawing.Point(75, 440);
             this.buttonCreateAccount.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCreateAccount.Name = "buttonCreateAccount";
-            this.buttonCreateAccount.Size = new System.Drawing.Size(267, 62);
+            this.buttonCreateAccount.Size = new System.Drawing.Size(250, 60);
             this.buttonCreateAccount.TabIndex = 6;
             this.buttonCreateAccount.Text = "Create Account";
             this.buttonCreateAccount.UseVisualStyleBackColor = false;
@@ -148,12 +149,23 @@
             // 
             this.labelFalsch.AutoSize = true;
             this.labelFalsch.ForeColor = System.Drawing.Color.Red;
-            this.labelFalsch.Location = new System.Drawing.Point(72, 331);
+            this.labelFalsch.Location = new System.Drawing.Point(75, 320);
             this.labelFalsch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFalsch.Name = "labelFalsch";
             this.labelFalsch.Size = new System.Drawing.Size(207, 16);
             this.labelFalsch.TabIndex = 9;
             this.labelFalsch.Text = "*Username oder Passwort Falsch";
+            // 
+            // linkLabelVergessen
+            // 
+            this.linkLabelVergessen.AutoSize = true;
+            this.linkLabelVergessen.Location = new System.Drawing.Point(200, 345);
+            this.linkLabelVergessen.Name = "linkLabelVergessen";
+            this.linkLabelVergessen.Size = new System.Drawing.Size(129, 16);
+            this.linkLabelVergessen.TabIndex = 10;
+            this.linkLabelVergessen.TabStop = true;
+            this.linkLabelVergessen.Text = "Passwort vergessen";
+            this.linkLabelVergessen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelVergessen_LinkClicked);
             // 
             // Anmeldemaske
             // 
@@ -161,6 +173,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(382, 553);
+            this.Controls.Add(this.linkLabelVergessen);
             this.Controls.Add(this.labelFalsch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -193,5 +206,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelFalsch;
+        private System.Windows.Forms.LinkLabel linkLabelVergessen;
     }
 }

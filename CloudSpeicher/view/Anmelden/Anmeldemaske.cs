@@ -19,6 +19,8 @@ namespace CloudSpeicher.view.Anmelden
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            /////////////passwort Hashen
+
             DatenbankAnbindung db = new DatenbankAnbindung();
             bool erfolgreich = db.Anmelden(textBoxBenutzername.Text, textBoxPasswort.Text);
             if (erfolgreich)
@@ -46,6 +48,11 @@ namespace CloudSpeicher.view.Anmelden
         private void Anmeldemaske_Load(object sender, EventArgs e)
         {
             labelFalsch.Hide();
+        }
+
+        private void linkLabelVergessen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //öffne passwortvergessen
         }
     }
 }

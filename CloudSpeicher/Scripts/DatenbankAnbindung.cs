@@ -19,7 +19,9 @@ namespace CloudSpeicher
         public bool Anmelden(string benutzername, string passwort)
         {
             bool angemeldet = false;
-
+            /////////////passwort Hashen
+            //////////// salt abfragen
+            ///////////Bestimmte zeichen unterbinnden
             string query = "SELECT passwort, benutzername FROM benutzer WHERE benutzername = '" + benutzername + "'  " +
                "AND passwort = '" + passwort + "' ;";
 
@@ -29,11 +31,8 @@ namespace CloudSpeicher
 
             try
             {
-
                 databaseConaction.Open();
-
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
                 if(reader.HasRows)
                 {
                     while (reader.Read())
@@ -51,9 +50,9 @@ namespace CloudSpeicher
             return angemeldet;
         }
 
-
         public void Acountersellen(string benutzer, string passwort, string Vorname, string Nachname)
         {
+            /////////////passwort erneut Hashen + Salt
 
             string query = "INSERT INTO benutzer Values " +
                 "(NULL,'" + benutzer + "','" + passwort + "','" + Vorname + "','" +Nachname +"');";
@@ -77,7 +76,7 @@ namespace CloudSpeicher
 
         public string[] AcoutInformationen(string benutzername)
         {
-            string query = "SELECT Vorname, Nachname FROM benutzer " +
+            string query = "SELECT Vorname, Nachname, Benutzername FROM benutzer " +
                            "WHERE benutzername = '" + benutzername + "';";
 
             string[] user = null;
@@ -104,6 +103,40 @@ namespace CloudSpeicher
             }
             databaseConaction.Close();
             return user;
+        }
+
+        public bool UsernameFree(string benutzername)
+        {
+            bool free = true;
+
+            string query = "SELECT passwort, benutzername FROM benutzer WHERE benutzername = '" + benutzername + "';";
+
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+            commandDatabase.CommandTimeout = 60;
+
+            try
+            {
+
+                databaseConaction.Open();
+
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("belegt");
+                        free = false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write("error: " + e.Message);
+            }
+            databaseConaction.Close();
+            return free;
         }
     }
 }
