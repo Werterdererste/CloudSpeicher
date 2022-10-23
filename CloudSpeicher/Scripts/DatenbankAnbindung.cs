@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace CloudSpeicher
@@ -137,6 +139,28 @@ namespace CloudSpeicher
             }
             databaseConaction.Close();
             return free;
+        }
+
+        public void UplodeFile(string user, Stream filestream)
+        {
+            string query = "INSERT INTO datein Values " +
+                "(NULL,'" + 1 + " ','" + filestream +"');";
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+            commandDatabase.CommandTimeout = 60;
+
+            try
+            {
+                databaseConaction.Open();
+
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+                databaseConaction.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.Write("error: " + e.Message);
+            }
         }
     }
 }

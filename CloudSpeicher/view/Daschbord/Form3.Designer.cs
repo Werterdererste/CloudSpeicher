@@ -42,6 +42,7 @@
             // 
             // panelMenü
             // 
+            this.panelMenü.AutoSize = true;
             this.panelMenü.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(206)))), ((int)(((byte)(248)))));
             this.panelMenü.Controls.Add(this.buttonDateiRunterladen);
             this.panelMenü.Controls.Add(this.buttonDateiHochladen);
@@ -49,9 +50,10 @@
             this.panelMenü.Controls.Add(this.panelTop);
             this.panelMenü.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenü.Location = new System.Drawing.Point(0, 0);
-            this.panelMenü.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.panelMenü.Margin = new System.Windows.Forms.Padding(0);
+            this.panelMenü.MinimumSize = new System.Drawing.Size(224, 768);
             this.panelMenü.Name = "panelMenü";
-            this.panelMenü.Size = new System.Drawing.Size(220, 786);
+            this.panelMenü.Size = new System.Drawing.Size(224, 768);
             this.panelMenü.TabIndex = 0;
             // 
             // buttonDateiRunterladen
@@ -61,11 +63,11 @@
             this.buttonDateiRunterladen.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDateiRunterladen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDateiRunterladen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonDateiRunterladen.Location = new System.Drawing.Point(0, 148);
-            this.buttonDateiRunterladen.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.buttonDateiRunterladen.Location = new System.Drawing.Point(0, 166);
+            this.buttonDateiRunterladen.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDateiRunterladen.Name = "buttonDateiRunterladen";
             this.buttonDateiRunterladen.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.buttonDateiRunterladen.Size = new System.Drawing.Size(220, 49);
+            this.buttonDateiRunterladen.Size = new System.Drawing.Size(224, 49);
             this.buttonDateiRunterladen.TabIndex = 3;
             this.buttonDateiRunterladen.Text = "Datei Runterladen";
             this.buttonDateiRunterladen.UseVisualStyleBackColor = false;
@@ -78,11 +80,11 @@
             this.buttonDateiHochladen.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDateiHochladen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDateiHochladen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonDateiHochladen.Location = new System.Drawing.Point(0, 99);
-            this.buttonDateiHochladen.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.buttonDateiHochladen.Location = new System.Drawing.Point(0, 117);
+            this.buttonDateiHochladen.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDateiHochladen.Name = "buttonDateiHochladen";
             this.buttonDateiHochladen.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.buttonDateiHochladen.Size = new System.Drawing.Size(220, 49);
+            this.buttonDateiHochladen.Size = new System.Drawing.Size(224, 49);
             this.buttonDateiHochladen.TabIndex = 2;
             this.buttonDateiHochladen.Text = "Datei Hochladen";
             this.buttonDateiHochladen.UseVisualStyleBackColor = false;
@@ -95,11 +97,11 @@
             this.buttonKonto.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonKonto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKonto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonKonto.Location = new System.Drawing.Point(0, 50);
-            this.buttonKonto.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.buttonKonto.Location = new System.Drawing.Point(0, 68);
+            this.buttonKonto.Margin = new System.Windows.Forms.Padding(0);
             this.buttonKonto.Name = "buttonKonto";
             this.buttonKonto.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.buttonKonto.Size = new System.Drawing.Size(220, 49);
+            this.buttonKonto.Size = new System.Drawing.Size(224, 49);
             this.buttonKonto.TabIndex = 1;
             this.buttonKonto.Text = "Konto";
             this.buttonKonto.UseVisualStyleBackColor = false;
@@ -110,49 +112,54 @@
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(220, 50);
+            this.panelTop.Size = new System.Drawing.Size(224, 68);
             this.panelTop.TabIndex = 1;
             // 
             // panelLeiste
             // 
+            this.panelLeiste.AutoSize = true;
             this.panelLeiste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(206)))), ((int)(((byte)(248)))));
             this.panelLeiste.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLeiste.Location = new System.Drawing.Point(220, 0);
-            this.panelLeiste.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.panelLeiste.Location = new System.Drawing.Point(224, 0);
+            this.panelLeiste.Margin = new System.Windows.Forms.Padding(0);
+            this.panelLeiste.MinimumSize = new System.Drawing.Size(800, 68);
             this.panelLeiste.Name = "panelLeiste";
-            this.panelLeiste.Size = new System.Drawing.Size(804, 50);
+            this.panelLeiste.Size = new System.Drawing.Size(800, 68);
             this.panelLeiste.TabIndex = 1;
             // 
             // datei_Runterladen1
             // 
+            this.datei_Runterladen1.AutoSize = true;
             this.datei_Runterladen1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.datei_Runterladen1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datei_Runterladen1.Location = new System.Drawing.Point(220, 50);
-            this.datei_Runterladen1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.datei_Runterladen1.Location = new System.Drawing.Point(224, 68);
+            this.datei_Runterladen1.Margin = new System.Windows.Forms.Padding(0);
             this.datei_Runterladen1.Name = "datei_Runterladen1";
-            this.datei_Runterladen1.Size = new System.Drawing.Size(804, 736);
+            this.datei_Runterladen1.Size = new System.Drawing.Size(800, 700);
             this.datei_Runterladen1.TabIndex = 4;
             // 
             // konto1
             // 
+            this.konto1.AutoSize = true;
             this.konto1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.konto1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.konto1.Location = new System.Drawing.Point(220, 50);
+            this.konto1.Location = new System.Drawing.Point(224, 68);
             this.konto1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.konto1.Name = "konto1";
-            this.konto1.Size = new System.Drawing.Size(804, 736);
+            this.konto1.Size = new System.Drawing.Size(800, 700);
             this.konto1.TabIndex = 3;
             // 
             // dateiHochladen1
             // 
+            this.dateiHochladen1.AutoSize = true;
             this.dateiHochladen1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.dateiHochladen1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateiHochladen1.Location = new System.Drawing.Point(220, 50);
+            this.dateiHochladen1.Location = new System.Drawing.Point(224, 68);
             this.dateiHochladen1.Margin = new System.Windows.Forms.Padding(5);
             this.dateiHochladen1.Name = "dateiHochladen1";
-            this.dateiHochladen1.Size = new System.Drawing.Size(804, 736);
+            this.dateiHochladen1.Size = new System.Drawing.Size(800, 700);
             this.dateiHochladen1.TabIndex = 2;
             this.dateiHochladen1.Visible = false;
             // 
@@ -161,13 +168,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(1024, 786);
+            this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.datei_Runterladen1);
             this.Controls.Add(this.konto1);
             this.Controls.Add(this.dateiHochladen1);
             this.Controls.Add(this.panelLeiste);
             this.Controls.Add(this.panelMenü);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
             this.Text = "Form3";
@@ -175,6 +182,7 @@
             this.Load += new System.EventHandler(this.Form3_Load);
             this.panelMenü.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
