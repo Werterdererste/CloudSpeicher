@@ -55,6 +55,7 @@
             this.panelMenü.Name = "panelMenü";
             this.panelMenü.Size = new System.Drawing.Size(224, 768);
             this.panelMenü.TabIndex = 0;
+            this.panelMenü.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenü_Paint);
             // 
             // buttonDateiRunterladen
             // 

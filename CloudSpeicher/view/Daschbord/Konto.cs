@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudSpeicher.view.Anmelden;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace CloudSpeicher
         public Konto()
         {
             InitializeComponent();
+        }
+
+        private void Konto_Load(object sender, EventArgs e)
+        {
+            Console.WriteLine(Anmeldemaske.idBenutzer + "k");
+
+            labelUserId.Text = Anmeldemaske.idBenutzer.ToString();
         }
 
     }

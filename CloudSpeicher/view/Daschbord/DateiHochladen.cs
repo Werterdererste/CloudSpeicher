@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudSpeicher.view.Anmelden;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace CloudSpeicher
     public partial class DateiHochladen : UserControl
     {
         List<Stream> streams = new List<Stream>();
+
         public DateiHochladen()
         {
             InitializeComponent();
@@ -51,7 +53,6 @@ namespace CloudSpeicher
             int selectet = listBox1.SelectedIndex;
             if (selectet >= 0)
             {
-                Console.WriteLine(selectet);
                 streams.RemoveAt(selectet);
                 listBox1.Items.RemoveAt(selectet);
             }
@@ -70,7 +71,7 @@ namespace CloudSpeicher
             DatenbankAnbindung db = new DatenbankAnbindung();
             for (int i = 0; i < streams.Count; i++)
             {
-                db.UplodeFile("Admin", streams[i]);
+                db.UplodeFile(Anmeldemaske.idBenutzer, streams[i]);
             }
             listBox1.Items.Clear();
             streams.Clear();

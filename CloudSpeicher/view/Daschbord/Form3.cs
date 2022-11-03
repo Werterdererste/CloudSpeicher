@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudSpeicher.view.Anmelden;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,6 +44,7 @@ namespace CloudSpeicher
 
         private void Form3_Load(object sender, EventArgs e)
         {
+
             dateiHochladen1.Hide();
             datei_Runterladen1.Hide();
             konto1.Show();
@@ -51,6 +53,11 @@ namespace CloudSpeicher
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void panelMenü_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

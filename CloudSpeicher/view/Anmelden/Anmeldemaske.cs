@@ -12,6 +12,7 @@ namespace CloudSpeicher.view.Anmelden
 {
     public partial class Anmeldemaske : Form
     {
+        public static int idBenutzer;
         public Anmeldemaske()
         {
             InitializeComponent();
@@ -22,11 +23,13 @@ namespace CloudSpeicher.view.Anmelden
             /////////////passwort Hashen
 
             DatenbankAnbindung db = new DatenbankAnbindung();
-            bool erfolgreich = db.Anmelden(textBoxBenutzername.Text, textBoxPasswort.Text);
-            if (erfolgreich)
+            idBenutzer = db.Anmelden(textBoxBenutzername.Text, textBoxPasswort.Text);
+            if (idBenutzer > 0)
             {
+                Console.WriteLine(idBenutzer+"n");
                 //öffne Dashbord
-                Form dashdashboard = new Form3();
+                Form3 dashdashboard = new Form3();
+                
                 dashdashboard.Show();
 
                 this.Hide();

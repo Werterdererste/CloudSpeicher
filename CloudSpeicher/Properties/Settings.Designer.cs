@@ -22,5 +22,17 @@ namespace CloudSpeicher.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Konto")]
+        public string testtest {
+            get {
+                return ((string)(this["testtest"]));
+            }
+            set {
+                this["testtest"] = value;
+            }
+        }
     }
 }

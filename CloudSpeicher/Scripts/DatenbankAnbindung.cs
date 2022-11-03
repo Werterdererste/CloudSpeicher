@@ -18,13 +18,13 @@ namespace CloudSpeicher
             databaseConaction = new MySqlConnection(conection);
         }
 
-        public bool Anmelden(string benutzername, string passwort)
+        public int Anmelden(string benutzername, string passwort)
         {
-            bool angemeldet = false;
+            int id = 0;
             /////////////passwort Hashen
             //////////// salt abfragen
             ///////////Bestimmte zeichen unterbinnden
-            string query = "SELECT passwort, benutzername FROM benutzer WHERE benutzername = '" + benutzername + "'  " +
+            string query = "SELECT IDBenutzer FROM benutzer WHERE benutzername = '" + benutzername + "'  " +
                "AND passwort = '" + passwort + "' ;";
 
 
@@ -39,8 +39,7 @@ namespace CloudSpeicher
                 {
                     while (reader.Read())
                     {
-                        Console.WriteLine("richtig");
-                        angemeldet = true;                           
+                        id = reader.GetInt32(0);                          
                     }
                 }
             }
@@ -49,7 +48,7 @@ namespace CloudSpeicher
                 Console.Write("error: " + e.Message);
             }
             databaseConaction.Close();
-            return angemeldet;
+            return id;
         }
 
         public void Acountersellen(string benutzer, string passwort, string Vorname, string Nachname)
@@ -141,10 +140,10 @@ namespace CloudSpeicher
             return free;
         }
 
-        public void UplodeFile(string user, Stream filestream)
+        public void UplodeFile(int user, Stream filestream)
         {
             string query = "INSERT INTO datein Values " +
-                "(NULL,'" + 1 + " ','" + filestream +"');";
+                "(NULL,'" + user + " ','" + filestream +"');";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
             commandDatabase.CommandTimeout = 60;
