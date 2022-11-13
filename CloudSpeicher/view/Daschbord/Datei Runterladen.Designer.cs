@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonRunterLaden = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -41,11 +42,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Datei Runterladen";
             // 
+            // buttonRunterLaden
+            // 
+            this.buttonRunterLaden.Location = new System.Drawing.Point(411, 337);
+            this.buttonRunterLaden.Name = "buttonRunterLaden";
+            this.buttonRunterLaden.Size = new System.Drawing.Size(75, 23);
+            this.buttonRunterLaden.TabIndex = 1;
+            this.buttonRunterLaden.Text = "Runterladen";
+            this.buttonRunterLaden.UseVisualStyleBackColor = true;
+            this.buttonRunterLaden.Click += new System.EventHandler(this.buttonRunterLaden_Click);
+            // 
             // Datei_Runterladen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.buttonRunterLaden);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Datei_Runterladen";
@@ -58,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonRunterLaden;
     }
 }

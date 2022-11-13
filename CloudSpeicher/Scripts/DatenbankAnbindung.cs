@@ -161,5 +161,39 @@ namespace CloudSpeicher
                 Console.Write("error: " + e.Message);
             }
         }
+        public Stream DownlodeFile(int user)
+        {
+            Stream filestream = null;
+            string query = "Select Datei FROM datein WHERE " +
+                "IDBenutzer = '"+ user+"';";
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+            commandDatabase.CommandTimeout = 60;
+
+            try
+            {
+                databaseConaction.Open();
+
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var file = reader.GetStream(0);
+                        Console.WriteLine(file.ToString());
+                        filestream = file;
+                    }
+                }
+
+                databaseConaction.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.Write("error: " + e.Message);
+            }
+            return filestream;
+        }
     }
 }
