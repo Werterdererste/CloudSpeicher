@@ -1,4 +1,5 @@
-﻿using CloudSpeicher.view.Anmelden;
+﻿using CloudSpeicher.Scripts;
+using CloudSpeicher.view.Anmelden;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,11 +24,13 @@ namespace CloudSpeicher
         private void buttonRunterLaden_Click(object sender, EventArgs e)
         {
             DatenbankAnbindung db = new DatenbankAnbindung();
-            Stream filestream = db.DownlodeFile(Anmeldemaske.idBenutzer);
+            var filestream = db.DownlodeFile(Anmeldemaske.idBenutzer);
+            var test = StreamToByte.streamtoByte(filestream);
+            Console.WriteLine(test.Length + " test");
             if (filestream != null)
             {
                 SaveFileDialog save = new SaveFileDialog();
-                
+                save.Filter = "jpg file|*.jpg|png file|*.png";
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     if ((filestream = save.OpenFile()) != null)

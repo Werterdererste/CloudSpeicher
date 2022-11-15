@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scripts\StreamToByte.cs" />
     <Compile Include="view\Anmelden\Anmeldemaske.cs">
       <SubType>Form</SubType>
     </Compile>

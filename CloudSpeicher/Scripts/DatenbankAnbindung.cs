@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Windows.Forms;
+using CloudSpeicher.Scripts;
 using MySql.Data.MySqlClient;
 
 namespace CloudSpeicher
@@ -65,7 +68,7 @@ namespace CloudSpeicher
             {
                 databaseConaction.Open();
 
-                MySqlDataReader reader = commandDatabase.ExecuteReader();
+                commandDatabase.ExecuteNonQuery();
                 databaseConaction.Close();  
               
             }
@@ -142,19 +145,24 @@ namespace CloudSpeicher
 
         public void UplodeFile(int user, Stream filestream)
         {
+            var filebyte = StreamToByte.streamtoByte(filestream);
+
             string query = "INSERT INTO datein Values " +
-                "(NULL,'" + user + " ','" + filestream +"');";
+                "(NULL,'" + user + " ', @File);";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
-            commandDatabase.CommandTimeout = 60;
 
+            MySqlParameter parameter = new MySqlParameter("@File", MySqlDbType.LongBlob, filebyte.Length);
+            parameter.Value = filebyte;
+            commandDatabase.Parameters.Add(parameter); 
+            
+            commandDatabase.CommandTimeout = 60;
             try
             {
                 databaseConaction.Open();
 
-                MySqlDataReader reader = commandDatabase.ExecuteReader();
+                commandDatabase.ExecuteNonQuery();
                 databaseConaction.Close();
-
             }
             catch (Exception e)
             {
@@ -175,14 +183,14 @@ namespace CloudSpeicher
                 databaseConaction.Open();
 
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
+                
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        var file = reader.GetStream(0);
-                        Console.WriteLine(file.ToString());
-                        filestream = file;
+                        filestream = reader.GetStream(0);
+                        var test = StreamToByte.streamtoByte(filestream);
+                        Console.WriteLine(test.Length);
                     }
                 }
 

@@ -1,10 +1,12 @@
 ﻿using CloudSpeicher.view.Anmelden;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +45,6 @@ namespace CloudSpeicher
                         listBox1.Items.Add(file);
                         streams.Add(openFileDialog.OpenFile());
                     }
-                    
                 }
             }
         }
