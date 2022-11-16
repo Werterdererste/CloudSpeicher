@@ -16,7 +16,7 @@ namespace CloudSpeicher
 {
     public partial class DateiHochladen : UserControl
     {
-        List<Stream> streams = new List<Stream>();
+        List<(Stream, string)> selectetFiles = new List<(Stream, string)>();
 
         public DateiHochladen()
         {
@@ -43,7 +43,8 @@ namespace CloudSpeicher
                     foreach (string file in openFileDialog.FileNames)
                     {
                         listBox1.Items.Add(file);
-                        streams.Add(openFileDialog.OpenFile());
+                        selectetFiles.Add((openFileDialog.OpenFile(),openFileDialog.SafeFileName));
+                        Console.WriteLine(openFileDialog.OpenFile().ToString() + " " + openFileDialog.SafeFileName.ToString());
                     }
                 }
             }
@@ -54,7 +55,7 @@ namespace CloudSpeicher
             int selectet = listBox1.SelectedIndex;
             if (selectet >= 0)
             {
-                streams.RemoveAt(selectet);
+                selectetFiles.RemoveAt(selectet);
                 listBox1.Items.RemoveAt(selectet);
             }
            
@@ -63,19 +64,20 @@ namespace CloudSpeicher
         private void buttonAlleLöschen_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            streams.Clear();
+            selectetFiles.Clear();
         }
 
         private void buttonHochladen_Click(object sender, EventArgs e)
         {
             ////file in db abspeichern
             DatenbankAnbindung db = new DatenbankAnbindung();
-            for (int i = 0; i < streams.Count; i++)
+            for (int i = 0; i < selectetFiles.Count; i++)
             {
-                db.UplodeFile(Anmeldemaske.idBenutzer, streams[i]);
+                //db.UplodeFile(Anmeldemaske.idBenutzer, streams[i]);
+                db.UplodeFile(Anmeldemaske.idBenutzer, selectetFiles[i].Item1, selectetFiles[i].Item2);
             }
             listBox1.Items.Clear();
-            streams.Clear();
+            selectetFiles.Clear();
         }
     }
 }

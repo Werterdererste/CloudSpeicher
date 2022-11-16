@@ -16,7 +16,7 @@ namespace CloudSpeicher
 {
     public partial class Datei_Runterladen : UserControl
     {
-
+        List<(Stream, String)> dateien = new List<(Stream, String)>();
         public Datei_Runterladen()
         {
             InitializeComponent();
@@ -24,27 +24,47 @@ namespace CloudSpeicher
 
         private void buttonRunterLaden_Click(object sender, EventArgs e)
         {
-            DatenbankAnbindung db = new DatenbankAnbindung();
-            var filestream = db.DownlodeFile(Anmeldemaske.idBenutzer);
+            int select = listBox1.SelectedIndex;
+            SaveFile(dateien[select].Item1, dateien[0].Item2);           
+        }
 
-            //var test = StreamToByte.streamtoByte(filestream[0]);
-            //Console.WriteLine(test.Length + " test");
+        private void SaveFile(Stream stream, string name)
+        {
+            int found = name.LastIndexOf(".");
+            string filetype =  name.Substring(found);
+            string filename = name.Substring(0, found);
 
-            if (filestream != null)
-            {
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
+                    saveFileDialog.FileName = filename;
+                    saveFileDialog.Filter = "Datei type|*"+filetype;
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                        using (FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                         {
-                                filestream[0].Seek(0, SeekOrigin.Begin);
-                                filestream[0].CopyTo(stream);
+                                stream.Seek(0, SeekOrigin.Begin);
+                                stream.CopyTo(fileStream);
                         }
                         
                     }
                 }
+            
+        }
+
+        private void Datei_Runterladen_Load(object sender, EventArgs e)
+        {
+            DatenbankAnbindung db = new DatenbankAnbindung();
+            dateien = db.DownlodeFile(Anmeldemaske.idBenutzer);
+
+            foreach((Stream stream, string name) in dateien)
+            {
+                listBox1.Items.Add(name);
             }
+        }
+
+        private void buttonLöschen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

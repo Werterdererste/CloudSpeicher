@@ -143,12 +143,12 @@ namespace CloudSpeicher
             return free;
         }
 
-        public void UplodeFile(int user, Stream filestream)
+        public void UplodeFile(int user, Stream filestream, string filename)
         {
             var filebyte = StreamToByte.streamtoByte(filestream);
 
             string query = "INSERT INTO datein Values " +
-                "(NULL,'" + user + " ', @File);";
+                "(NULL,'" + user + " ', @File , '"+ filename+"');";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
 
@@ -169,10 +169,11 @@ namespace CloudSpeicher
                 Console.Write("error: " + e.Message);
             }
         }
-        public List<Stream> DownlodeFile(int user)
+        public List<(Stream, string)> DownlodeFile(int user)
         {
-            List<Stream> filestream = new List<Stream>();
-            string query = "Select Datei FROM datein WHERE " +
+            List<(Stream, string)> userFiles = new List<(Stream , string)>();
+
+            string query = "Select datei, dateiname FROM datein WHERE " +
                 "IDBenutzer = '"+ user+"';";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
@@ -188,7 +189,7 @@ namespace CloudSpeicher
                 {
                     while (reader.Read())
                     {
-                        filestream.Add(reader.GetStream(0));
+                        userFiles.Add((reader.GetStream(0), reader.GetString(1)));
                     }
                 }
 
@@ -199,7 +200,7 @@ namespace CloudSpeicher
             {
                 Console.Write("error: " + e.Message);
             }
-            return filestream;
+            return userFiles;
         }
     }
 }
