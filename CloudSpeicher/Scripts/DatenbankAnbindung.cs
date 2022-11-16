@@ -169,9 +169,9 @@ namespace CloudSpeicher
                 Console.Write("error: " + e.Message);
             }
         }
-        public Stream DownlodeFile(int user)
+        public List<Stream> DownlodeFile(int user)
         {
-            Stream filestream = null;
+            List<Stream> filestream = new List<Stream>();
             string query = "Select Datei FROM datein WHERE " +
                 "IDBenutzer = '"+ user+"';";
 
@@ -188,9 +188,7 @@ namespace CloudSpeicher
                 {
                     while (reader.Read())
                     {
-                        filestream = reader.GetStream(0);
-                        var test = StreamToByte.streamtoByte(filestream);
-                        Console.WriteLine(test.Length);
+                        filestream.Add(reader.GetStream(0));
                     }
                 }
 

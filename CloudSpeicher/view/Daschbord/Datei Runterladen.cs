@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,17 +26,22 @@ namespace CloudSpeicher
         {
             DatenbankAnbindung db = new DatenbankAnbindung();
             var filestream = db.DownlodeFile(Anmeldemaske.idBenutzer);
-            var test = StreamToByte.streamtoByte(filestream);
-            Console.WriteLine(test.Length + " test");
+
+            //var test = StreamToByte.streamtoByte(filestream[0]);
+            //Console.WriteLine(test.Length + " test");
+
             if (filestream != null)
             {
-                SaveFileDialog save = new SaveFileDialog();
-                save.Filter = "jpg file|*.jpg|png file|*.png";
-                if (save.ShowDialog() == DialogResult.OK)
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    if ((filestream = save.OpenFile()) != null)
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        filestream.Close();
+                        using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                        {
+                                filestream[0].Seek(0, SeekOrigin.Begin);
+                                filestream[0].CopyTo(stream);
+                        }
+                        
                     }
                 }
             }
