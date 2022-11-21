@@ -33,19 +33,16 @@ namespace CloudSpeicher
             // file auswählen
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Multiselect = true;
                 openFileDialog.Title = "Hochladen";
                 openFileDialog.InitialDirectory = @"C:\";
 
                 DialogResult result = openFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    foreach (string file in openFileDialog.FileNames)
-                    {
-                        listBox1.Items.Add(file);
-                        selectetFiles.Add((openFileDialog.OpenFile(),openFileDialog.SafeFileName));
-                        Console.WriteLine(openFileDialog.OpenFile().ToString() + " " + openFileDialog.SafeFileName.ToString());
-                    }
+                    listBox1.Items.Add(openFileDialog.SafeFileName);
+                    selectetFiles.Add((openFileDialog.OpenFile(),openFileDialog.SafeFileName));
+                    Console.WriteLine(openFileDialog.OpenFile().ToString() + " " + openFileDialog.SafeFileName.ToString());
+
                 }
             }
         }

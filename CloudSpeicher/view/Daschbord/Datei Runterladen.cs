@@ -24,11 +24,19 @@ namespace CloudSpeicher
 
         private void buttonRunterLaden_Click(object sender, EventArgs e)
         {
-            int select = listBox1.SelectedIndex;
-            SaveFile(dateien[select].Item1, dateien[0].Item2);           
+            try
+            {
+                int select = listBox1.SelectedIndex;
+                DownlodeFile(dateien[select].Item1, dateien[0].Item2);  
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine(ex);
+            }
+         
         }
 
-        private void SaveFile(Stream stream, string name)
+        private void DownlodeFile(Stream stream, string name)
         {
             int found = name.LastIndexOf(".");
             string filetype =  name.Substring(found);
@@ -55,7 +63,7 @@ namespace CloudSpeicher
         {
             DatenbankAnbindung db = new DatenbankAnbindung();
             dateien = db.DownlodeFile(Anmeldemaske.idBenutzer);
-
+            listBox1.Items.Clear();
             foreach((Stream stream, string name) in dateien)
             {
                 listBox1.Items.Add(name);
@@ -64,7 +72,17 @@ namespace CloudSpeicher
 
         private void buttonLöschen_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string selectelement = listBox1.SelectedItem.ToString();
+                DatenbankAnbindung db = new DatenbankAnbindung();
+                db.DeleteFile(Anmeldemaske.idBenutzer, selectelement);
+                this.Datei_Runterladen_Load(sender, e);
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

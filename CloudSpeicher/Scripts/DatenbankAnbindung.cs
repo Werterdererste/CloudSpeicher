@@ -202,5 +202,26 @@ namespace CloudSpeicher
             }
             return userFiles;
         }
+
+        public void DeleteFile(int user, string filename)
+        {
+
+            string query = "DELETE FROM datein WHERE IDbenutzer = '" + user +"' AND dateiName = '"+filename+"' ;";
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.CommandTimeout = 60;
+            try
+            {
+                Console.WriteLine("test");
+                databaseConaction.Open();
+                commandDatabase.ExecuteNonQuery();
+                databaseConaction.Close();
+            }
+            catch (Exception e)
+            {
+                Console.Write("error: " + e.Message);
+            }
+        }
     }
 }
