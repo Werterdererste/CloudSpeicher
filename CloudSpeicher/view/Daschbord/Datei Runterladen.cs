@@ -11,6 +11,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace CloudSpeicher
 {
@@ -58,16 +59,20 @@ namespace CloudSpeicher
                 }
             
         }
-
+        public void Anzeige_Updaten()
+        {            
+            DatenbankAnbindung db = new DatenbankAnbindung();
+                   
+                dateien = db.DownlodeFile(Anmeldemaske.idBenutzer);
+                listBox1.Items.Clear();
+                foreach ((Stream stream, string name) in dateien)
+                {
+                    listBox1.Items.Add(name);
+                }
+        }
         private void Datei_Runterladen_Load(object sender, EventArgs e)
         {
-            DatenbankAnbindung db = new DatenbankAnbindung();
-            dateien = db.DownlodeFile(Anmeldemaske.idBenutzer);
-            listBox1.Items.Clear();
-            foreach((Stream stream, string name) in dateien)
-            {
-                listBox1.Items.Add(name);
-            }
+            Anzeige_Updaten();
         }
 
         private void buttonLöschen_Click(object sender, EventArgs e)
@@ -77,12 +82,13 @@ namespace CloudSpeicher
                 string selectelement = listBox1.SelectedItem.ToString();
                 DatenbankAnbindung db = new DatenbankAnbindung();
                 db.DeleteFile(Anmeldemaske.idBenutzer, selectelement);
-                this.Datei_Runterladen_Load(sender, e);
+                Anzeige_Updaten();
             }
             catch (NullReferenceException ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+        
     }
 }

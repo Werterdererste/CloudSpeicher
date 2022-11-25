@@ -23,7 +23,13 @@ namespace CloudSpeicher
             Console.WriteLine(Anmeldemaske.idBenutzer + "k");
 
             labelUserId.Text = Anmeldemaske.idBenutzer.ToString();
-        }
+            DatenbankAnbindung db = new DatenbankAnbindung();
 
+            string[] info = db.AcoutInformationen(Anmeldemaske.idBenutzer);
+
+            labelVorname.Text = info[0];
+            labelNachname.Text = info[1];
+            labelBenutzername.Text = info[2];
+        }
     }
 }

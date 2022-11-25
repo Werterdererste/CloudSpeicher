@@ -40,6 +40,7 @@ namespace CloudSpeicher
             konto1.Hide();
 
             datei_Runterladen1.Show();
+            datei_Runterladen1.Anzeige_Updaten();
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -48,6 +49,7 @@ namespace CloudSpeicher
             dateiHochladen1.Hide();
             datei_Runterladen1.Hide();
             konto1.Show();
+            
         }
 
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)

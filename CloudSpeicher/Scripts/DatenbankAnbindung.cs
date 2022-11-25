@@ -78,10 +78,10 @@ namespace CloudSpeicher
             }
         }
 
-        public string[] AcoutInformationen(string benutzername)
+        public string[] AcoutInformationen(int benutzerid)
         {
             string query = "SELECT Vorname, Nachname, Benutzername FROM benutzer " +
-                           "WHERE benutzername = '" + benutzername + "';";
+                           "WHERE IDBenutzer = " + benutzerid + ";";
 
             string[] user = null;
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
@@ -97,7 +97,7 @@ namespace CloudSpeicher
                 {
                     while (reader.Read())
                     {
-                        user = new string[] { reader.GetString(0), reader.GetString(1) } ;
+                        user = new string[] { reader.GetString(0), reader.GetString(1), reader.GetString(2) } ;
                     }
                 }
             }
@@ -213,7 +213,6 @@ namespace CloudSpeicher
             commandDatabase.CommandTimeout = 60;
             try
             {
-                Console.WriteLine("test");
                 databaseConaction.Open();
                 commandDatabase.ExecuteNonQuery();
                 databaseConaction.Close();
