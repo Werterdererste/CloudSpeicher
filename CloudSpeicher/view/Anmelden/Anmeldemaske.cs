@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudSpeicher.Scripts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +21,11 @@ namespace CloudSpeicher.view.Anmelden
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            /////////////passwort Hashen
+            //ersteebene
+            string passworthash = Passwortverschlüsseln.GetHashString(textBoxPasswort.Text);
 
             DatenbankAnbindung db = new DatenbankAnbindung();
-            idBenutzer = db.Anmelden(textBoxBenutzername.Text, textBoxPasswort.Text);
+            idBenutzer = db.Anmelden(textBoxBenutzername.Text, passworthash);
             if (idBenutzer > 0)
             {
                 Console.WriteLine(idBenutzer+"n");

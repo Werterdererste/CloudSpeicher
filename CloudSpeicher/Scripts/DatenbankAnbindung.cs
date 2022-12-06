@@ -24,11 +24,12 @@ namespace CloudSpeicher
         public int Anmelden(string benutzername, string passwort)
         {
             int id = 0;
-            /////////////passwort Hashen
-            //////////// salt abfragen
+            //zweite ebene
+            string passwortHashHash = Passwortverschlüsseln.GetHashString(passwort);
+
             ///////////Bestimmte zeichen unterbinnden
             string query = "SELECT IDBenutzer FROM benutzer WHERE benutzername = '" + benutzername + "'  " +
-               "AND passwort = '" + passwort + "' ;";
+               "AND passwort = '" + passwortHashHash + "' ;";
 
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
@@ -56,10 +57,11 @@ namespace CloudSpeicher
 
         public void Acountersellen(string benutzer, string passwort, string Vorname, string Nachname)
         {
-            /////////////passwort erneut Hashen + Salt
+            //zweite ebene
+            string passwortHashHash = Passwortverschlüsseln.GetHashString(passwort);
 
             string query = "INSERT INTO benutzer Values " +
-                "(NULL,'" + benutzer + "','" + passwort + "','" + Vorname + "','" +Nachname +"');";
+                "(NULL,'" + benutzer + "','" + passwortHashHash + "','" + Vorname + "','" +Nachname +"');";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
             commandDatabase.CommandTimeout = 60;

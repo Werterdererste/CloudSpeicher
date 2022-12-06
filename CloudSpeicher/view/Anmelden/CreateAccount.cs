@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudSpeicher.Scripts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,9 +45,10 @@ namespace CloudSpeicher.view.Anmelden
                     //Passwörter stimmen überein
                     if (textBoxPasswort.Text == textBoxPasswortwiederholen.Text)
                     {
-                        /////////////passwort Hashen
+                        //erse ebene
+                        string passwortHash = Passwortverschlüsseln.GetHashString(textBoxPasswort.Text);
 
-                        db.Acountersellen(textBoxUsername.Text,textBoxPasswort.Text, textBoxVorname.Text,
+                        db.Acountersellen(textBoxUsername.Text,passwortHash, textBoxVorname.Text,
                             textBoxNachname.Text);
 
                         //fenster schlißen
