@@ -20,7 +20,6 @@ namespace CloudSpeicher
 
         private void Konto_Load(object sender, EventArgs e)
         {
-            Console.WriteLine(Anmeldemaske.idBenutzer + "k");
 
             labelUserId.Text = Anmeldemaske.idBenutzer.ToString();
             DatenbankAnbindung db = new DatenbankAnbindung();

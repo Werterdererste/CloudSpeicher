@@ -28,11 +28,15 @@ namespace CloudSpeicher
             string passwortHashHash = Passwortverschlüsseln.GetHashString(passwort);
 
             ///////////Bestimmte zeichen unterbinnden
-            string query = "SELECT IDBenutzer FROM benutzer WHERE benutzername = '" + benutzername + "'  " +
-               "AND passwort = '" + passwortHashHash + "' ;";
-
-
+            string query = "SELECT IDBenutzer FROM benutzer WHERE benutzername = @benutzername " +
+               "AND passwort = @passwort ;";
+            
+            
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.Parameters.AddWithValue("@benutzername", benutzername);
+            commandDatabase.Parameters.AddWithValue("@passwort", passwortHashHash);
+
             commandDatabase.CommandTimeout = 60;
 
             try
@@ -61,9 +65,15 @@ namespace CloudSpeicher
             string passwortHashHash = Passwortverschlüsseln.GetHashString(passwort);
 
             string query = "INSERT INTO benutzer Values " +
-                "(NULL,'" + benutzer + "','" + passwortHashHash + "','" + Vorname + "','" +Nachname +"');";
+                "(NULL, @benutzer, @passwort, @vorname , @nachname);";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.Parameters.AddWithValue("@benutzer", benutzer);
+            commandDatabase.Parameters.AddWithValue("@passwort", passwortHashHash);
+            commandDatabase.Parameters.AddWithValue("@vorname", Vorname);
+            commandDatabase.Parameters.AddWithValue("@nachname", Nachname);
+
             commandDatabase.CommandTimeout = 60;
 
             try
@@ -83,11 +93,15 @@ namespace CloudSpeicher
         public string[] AcoutInformationen(int benutzerid)
         {
             string query = "SELECT Vorname, Nachname, Benutzername FROM benutzer " +
-                           "WHERE IDBenutzer = " + benutzerid + ";";
+                           "WHERE IDBenutzer = @benutzer";
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.Parameters.AddWithValue("@benutzer", benutzerid);
+
+            commandDatabase.CommandTimeout = 60;
 
             string[] user = null;
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
-            commandDatabase.CommandTimeout = 60;
 
             try
             {
@@ -115,10 +129,13 @@ namespace CloudSpeicher
         {
             bool free = true;
 
-            string query = "SELECT passwort, benutzername FROM benutzer WHERE benutzername = '" + benutzername + "';";
+            string query = "SELECT passwort, benutzername FROM benutzer WHERE benutzername = @benutzer;";
 
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.Parameters.AddWithValue("@benutzer", benutzername);
+
             commandDatabase.CommandTimeout = 60;
 
             try
@@ -150,14 +167,18 @@ namespace CloudSpeicher
             var filebyte = StreamToByte.streamtoByte(filestream);
 
             string query = "INSERT INTO datein Values " +
-                "(NULL,'" + user + " ', @File , '"+ filename+"');";
+                "(NULL, @user, @File , @filename);";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
 
             MySqlParameter parameter = new MySqlParameter("@File", MySqlDbType.LongBlob, filebyte.Length);
             parameter.Value = filebyte;
-            commandDatabase.Parameters.Add(parameter); 
-            
+            commandDatabase.Parameters.Add(parameter);
+
+            commandDatabase.Parameters.AddWithValue("@user", user);
+            commandDatabase.Parameters.AddWithValue("@filename", filename);
+
+
             commandDatabase.CommandTimeout = 60;
             try
             {
@@ -166,8 +187,9 @@ namespace CloudSpeicher
                 commandDatabase.ExecuteNonQuery();
                 databaseConaction.Close();
             }
-            catch (Exception e)
+            catch (MySqlException e)
             {
+                MessageBox.Show("test");
                 Console.Write("error: " + e.Message);
             }
         }
@@ -176,9 +198,12 @@ namespace CloudSpeicher
             List<(Stream, string)> userFiles = new List<(Stream , string)>();
 
             string query = "Select datei, dateiname FROM datein WHERE " +
-                "IDBenutzer = '"+ user+"';";
+                "IDBenutzer = @user";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.Parameters.AddWithValue("@user", user);
+
             commandDatabase.CommandTimeout = 60;
 
             try
@@ -208,9 +233,12 @@ namespace CloudSpeicher
         public void DeleteFile(int user, string filename)
         {
 
-            string query = "DELETE FROM datein WHERE IDbenutzer = '" + user +"' AND dateiName = '"+filename+"' ;";
+            string query = "DELETE FROM datein WHERE IDbenutzer = @user AND dateiName = @filename";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConaction);
+
+            commandDatabase.Parameters.AddWithValue("@user", user);
+            commandDatabase.Parameters.AddWithValue("@filename", filename);
 
             commandDatabase.CommandTimeout = 60;
             try

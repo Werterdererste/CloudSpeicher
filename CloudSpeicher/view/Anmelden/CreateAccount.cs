@@ -12,7 +12,8 @@ using System.Windows.Forms;
 namespace CloudSpeicher.view.Anmelden
 {
     public partial class CreateAccount : Form
-    {
+    {            
+        DatenbankAnbindung db = new DatenbankAnbindung();
         public CreateAccount()
         {
             InitializeComponent();
@@ -25,11 +26,31 @@ namespace CloudSpeicher.view.Anmelden
             labelInfoUsername.Hide();
         }
 
+        private bool UserAcountCheck()
+        {
+            // username nicht benutzt
+            if (db.UsernameFree(textBoxUsername.Text))
+            {
+                //Passwörter stimmen überein
+                if (textBoxPasswort.Text == textBoxPasswortwiederholen.Text)
+                {
+                    return true;
+                }
+                else
+                {
+                    labelInfoPasswort.Show();
+                }
+            }
+            else
+            {
+                labelInfoUsername.Show();
+            }
+            return false;
+        }
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            DatenbankAnbindung db = new DatenbankAnbindung();
 
-         Console.WriteLine("t");
+
 
             //Alle Felder Ausgefüllt
             bool Empty = textBoxVorname.TextLength == 0 || textBoxNachname.TextLength == 0
@@ -39,35 +60,22 @@ namespace CloudSpeicher.view.Anmelden
 
             if (!Empty)
             {
-                // username nicht benutzt
-                if (db.UsernameFree(textBoxUsername.Text))
+                if (UserAcountCheck())
                 {
-                    //Passwörter stimmen überein
-                    if (textBoxPasswort.Text == textBoxPasswortwiederholen.Text)
-                    {
-                        //erse ebene
-                        string passwortHash = Passwortverschlüsseln.GetHashString(textBoxPasswort.Text);
+                    //erse ebene
+                    string passwortHash = Passwortverschlüsseln.GetHashString(textBoxPasswort.Text);
 
-                        db.Acountersellen(textBoxUsername.Text,passwortHash, textBoxVorname.Text,
-                            textBoxNachname.Text);
+                    db.Acountersellen(textBoxUsername.Text,passwortHash, textBoxVorname.Text,
+                    textBoxNachname.Text);
 
-                        //fenster schlißen
-                        this.Close();
-                    }
-                    else
-                    {
-                        labelInfoPasswort.Show();
-                    }
-                }
-                else
-                {
-                    labelInfoUsername.Show();
+                    //fenster schlißen
+                    this.Close();
                 }
             }
             else
             {
                 labelInfoFeld.Show();
-            }
+            }    
         }
     }
 }
